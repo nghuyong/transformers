@@ -13,27 +13,23 @@ on:
   # pull_request:
   repository_dispatch:
 
+
 jobs:
   run_tests_torch_gpu:
     runs-on: [self-hosted, docker-gpu]
+    container: nvcr.io/nvidia/pytorch:21.02-py3
     steps:
       - uses: actions/checkout@v2
-      - name: Launcher docker
+      - name: Python version
         run: |
-          sudo docker run --gpus all -t --ipc=host --shm-size="4g" --rm -v /home/github_actions/actions-runner/_work/transformers/transformers:/home/github_actions/transformers nvcr.io/nvidia/pytorch:21.02-py3
-          cd /home/github_actions/transformers
-
-#      - name: Python version
-#        run: |
-#          which python
-#          python --version
-#          pip --version
+          which python
+          python --version
+          pip --version
 
       - name: Current dir
         run: pwd
 
-      - name: NVIDIA-SMI
-        run: nvidia-smi
+      - run: nvidia-smi
 
       - name: Kill any run-away pytest processes
         run: (pkill -f tests; pkill -f examples) || echo "no zombies"
