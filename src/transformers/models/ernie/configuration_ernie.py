@@ -25,7 +25,16 @@ from ...utils import logging
 logger = logging.get_logger(__name__)
 
 ERNIE_PRETRAINED_CONFIG_ARCHIVE_MAP = {
+    "nghuyong/ernie-1.0-base-zh": "https://huggingface.co/nghuyong/ernie-1.0-base-zh/resolve/main/config.json",
+    "nghuyong/ernie-2.0-base-en": "https://huggingface.co/nghuyong/ernie-2.0-base-en/resolve/main/config.json",
+    "nghuyong/ernie-2.0-large-en": "https://huggingface.co/nghuyong/ernie-2.0-large-en/resolve/main/config.json",
     "nghuyong/ernie-3.0-base-zh": "https://huggingface.co/nghuyong/ernie-3.0-base-zh/resolve/main/config.json",
+    "nghuyong/ernie-3.0-medium-zh": "https://huggingface.co/nghuyong/ernie-3.0-medium-zh/resolve/main/config.json",
+    "nghuyong/ernie-3.0-mini-zh": "https://huggingface.co/nghuyong/ernie-3.0-mini-zh/resolve/main/config.json",
+    "nghuyong/ernie-3.0-micro-zh": "https://huggingface.co/nghuyong/ernie-3.0-micro-zh/resolve/main/config.json",
+    "nghuyong/ernie-3.0-nano-zh": "https://huggingface.co/nghuyong/ernie-3.0-nano-zh/resolve/main/config.json",
+    "nghuyong/ernie-gram-zh": "https://huggingface.co/nghuyong/ernie-gram-zh/resolve/main/config.json",
+    "nghuyong/ernie-health-zh": "https://huggingface.co/nghuyong/ernie-health-zh/resolve/main/config.json",
 }
 
 
@@ -65,6 +74,10 @@ class ErnieConfig(PretrainedConfig):
             just in case (e.g., 512 or 1024 or 2048).
         type_vocab_size (`int`, *optional*, defaults to 2):
             The vocabulary size of the `token_type_ids` passed when calling [`ErnieModel`] or [`TFErnieModel`].
+        task_type_vocab_size (`int`, *optional*, defaults to 3):
+            The vocabulary size of the `task_type_ids` for ERNIE2.0/ERNIE3.0 model
+        use_task_id (`bool`, *optional*, defaults to `False`):
+            Whether or not the model support `task_type_ids`
         initializer_range (`float`, *optional*, defaults to 0.02):
             The standard deviation of the truncated_normal_initializer for initializing all weight matrices.
         layer_norm_eps (`float`, *optional*, defaults to 1e-12):
@@ -109,6 +122,8 @@ class ErnieConfig(PretrainedConfig):
         attention_probs_dropout_prob=0.1,
         max_position_embeddings=512,
         type_vocab_size=2,
+        task_type_vocab_size=3,
+        use_task_id=False,
         initializer_range=0.02,
         layer_norm_eps=1e-12,
         pad_token_id=0,
@@ -129,6 +144,8 @@ class ErnieConfig(PretrainedConfig):
         self.attention_probs_dropout_prob = attention_probs_dropout_prob
         self.max_position_embeddings = max_position_embeddings
         self.type_vocab_size = type_vocab_size
+        self.task_type_vocab_size = task_type_vocab_size
+        self.use_task_id = use_task_id
         self.initializer_range = initializer_range
         self.layer_norm_eps = layer_norm_eps
         self.position_embedding_type = position_embedding_type

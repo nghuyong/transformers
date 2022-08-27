@@ -13,21 +13,11 @@ specific language governing permissions and limitations under the License.
 # Ernie
 
 ## Overview
+ERNIE is a series of powerful models proposed by baidu, especially in Chinese tasks,
+including [ERNIE1.0](https://arxiv.org/abs/1904.09223), [ERNIE2.0](https://ojs.aaai.org/index.php/AAAI/article/view/6428),
+[ERNIE3.0](https://arxiv.org/abs/2107.02137), [ERNIE-Gram](https://arxiv.org/abs/2010.12148), [ERNIE-health](https://arxiv.org/abs/2110.07244), etc.
 
-The Ernie model was proposed in [<INSERT PAPER NAME HERE>](<INSERT PAPER LINK HERE>) by <INSERT AUTHORS HERE>.
-<INSERT SHORT SUMMARY HERE>
-
-The abstract from the paper is the following:
-
-*<INSERT PAPER ABSTRACT HERE>*
-
-Tips:
-
-<INSERT TIPS ABOUT MODEL HERE>
-
-This model was contributed by [INSERT YOUR HF USERNAME HERE](https://huggingface.co/<INSERT YOUR HF USERNAME HERE>).
-The original code can be found [here](<INSERT LINK TO GITHUB REPO HERE>).
-
+These models are contributed by [nghuyong](https://huggingface.co/nghuyong) and the official code can be found in [PaddleNLP](https://github.com/PaddlePaddle/PaddleNLP) (in PaddlePaddle).
 
 ## ErnieConfig
 
@@ -37,10 +27,6 @@ The original code can be found [here](<INSERT LINK TO GITHUB REPO HERE>).
 ## Ernie specific outputs
 
 [[autodoc]] models.ernie.modeling_ernie.ErnieForPreTrainingOutput
-
-[[autodoc]] models.ernie.modeling_tf_ernie.TFErnieForPreTrainingOutput
-
-[[autodoc]] models.ernie.modeling_flax_ernie.FlaxErnieForPreTrainingOutput
 
 ## ErnieModel
 
@@ -60,29 +46,4 @@ The original code can be found [here](<INSERT LINK TO GITHUB REPO HERE>).
 ## ErnieForMaskedLM
 
 [[autodoc]] ErnieForMaskedLM
-    - forward
-
-## ErnieForNextSentencePrediction
-
-[[autodoc]] ErnieForNextSentencePrediction
-    - forward
-
-## ErnieForSequenceClassification
-
-[[autodoc]] ErnieForSequenceClassification
-    - forward
-
-## ErnieForMultipleChoice
-
-[[autodoc]] ErnieForMultipleChoice
-    - forward
-
-## ErnieForTokenClassification
-
-[[autodoc]] ErnieForTokenClassification
-    - forward
-
-## ErnieForQuestionAnswering
-
-[[autodoc]] ErnieForQuestionAnswering
     - forward
