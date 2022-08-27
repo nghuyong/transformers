@@ -143,6 +143,13 @@ _import_structure = {
         "BertTokenizer",
         "WordpieceTokenizer",
     ],
+    "models.ernie": [
+        "ERNIE_PRETRAINED_CONFIG_ARCHIVE_MAP",
+        "BasicTokenizer",
+        "ErnieConfig",
+       
+        "WordpieceTokenizer",
+    ],
     "models.bert_generation": ["BertGenerationConfig"],
     "models.bert_japanese": ["BertJapaneseTokenizer", "CharacterTokenizer", "MecabTokenizer"],
     "models.bertweet": ["BertweetTokenizer"],
@@ -884,6 +891,23 @@ else:
             "BertModel",
             "BertPreTrainedModel",
             "load_tf_weights_in_bert",
+        ]
+    )
+    _import_structure["models.ernie"].extend(
+        [
+            "ERNIE_PRETRAINED_MODEL_ARCHIVE_LIST",
+            "ErnieForMaskedLM",
+            "ErnieForMultipleChoice",
+            "ErnieForNextSentencePrediction",
+            "ErnieForPreTraining",
+            "ErnieForQuestionAnswering",
+            "ErnieForSequenceClassification",
+            "ErnieForTokenClassification",
+            "ErnieLayer",
+            "ErnieLMHeadModel",
+            "ErnieModel",
+            "ErniePreTrainedModel",
+            "load_tf_weights_in_ernie",
         ]
     )
     _import_structure["models.bert_generation"].extend(
@@ -2142,6 +2166,23 @@ else:
             "TFBertPreTrainedModel",
         ]
     )
+    _import_structure["models.ernie"].extend(
+        [
+            "TF_ERNIE_PRETRAINED_MODEL_ARCHIVE_LIST",
+            "TFErnieEmbeddings",
+            "TFErnieForMaskedLM",
+            "TFErnieForMultipleChoice",
+            "TFErnieForNextSentencePrediction",
+            "TFErnieForPreTraining",
+            "TFErnieForQuestionAnswering",
+            "TFErnieForSequenceClassification",
+            "TFErnieForTokenClassification",
+            "TFErnieLMHeadModel",
+            "TFErnieMainLayer",
+            "TFErnieModel",
+            "TFErniePreTrainedModel",
+        ]
+    )
     _import_structure["models.blenderbot"].extend(
         ["TFBlenderbotForConditionalGeneration", "TFBlenderbotModel", "TFBlenderbotPreTrainedModel"]
     )
@@ -2711,6 +2752,20 @@ else:
             "FlaxBertPreTrainedModel",
         ]
     )
+    _import_structure["models.ernie"].extend(
+        [
+            "FlaxErnieForCausalLM",
+            "FlaxErnieForMaskedLM",
+            "FlaxErnieForMultipleChoice",
+            "FlaxErnieForNextSentencePrediction",
+            "FlaxErnieForPreTraining",
+            "FlaxErnieForQuestionAnswering",
+            "FlaxErnieForSequenceClassification",
+            "FlaxErnieForTokenClassification",
+            "FlaxErnieModel",
+            "FlaxErniePreTrainedModel",
+        ]
+    )
     _import_structure["models.big_bird"].extend(
         [
             "FlaxBigBirdForCausalLM",
@@ -2948,6 +3003,13 @@ if TYPE_CHECKING:
         BasicTokenizer,
         BertConfig,
         BertTokenizer,
+        WordpieceTokenizer,
+    )
+    from .models.ernie import (
+        ERNIE_PRETRAINED_CONFIG_ARCHIVE_MAP,
+        BasicTokenizer,
+        ErnieConfig,
+       
         WordpieceTokenizer,
     )
     from .models.bert_generation import BertGenerationConfig
@@ -3588,6 +3650,21 @@ if TYPE_CHECKING:
             BertModel,
             BertPreTrainedModel,
             load_tf_weights_in_bert,
+        )
+        from .models.ernie import (
+            ERNIE_PRETRAINED_MODEL_ARCHIVE_LIST,
+            ErnieForMaskedLM,
+            ErnieForMultipleChoice,
+            ErnieForNextSentencePrediction,
+            ErnieForPreTraining,
+            ErnieForQuestionAnswering,
+            ErnieForSequenceClassification,
+            ErnieForTokenClassification,
+            ErnieLayer,
+            ErnieLMHeadModel,
+            ErnieModel,
+            ErniePreTrainedModel,
+            load_tf_weights_in_ernie,
         )
         from .models.bert_generation import (
             BertGenerationDecoder,
@@ -4637,6 +4714,21 @@ if TYPE_CHECKING:
             TFBertModel,
             TFBertPreTrainedModel,
         )
+        from .models.ernie import (
+            TF_ERNIE_PRETRAINED_MODEL_ARCHIVE_LIST,
+            TFErnieEmbeddings,
+            TFErnieForMaskedLM,
+            TFErnieForMultipleChoice,
+            TFErnieForNextSentencePrediction,
+            TFErnieForPreTraining,
+            TFErnieForQuestionAnswering,
+            TFErnieForSequenceClassification,
+            TFErnieForTokenClassification,
+            TFErnieLMHeadModel,
+            TFErnieMainLayer,
+            TFErnieModel,
+            TFErniePreTrainedModel,
+        )
         from .models.blenderbot import (
             TFBlenderbotForConditionalGeneration,
             TFBlenderbotModel,
@@ -5076,6 +5168,18 @@ if TYPE_CHECKING:
             FlaxBertForTokenClassification,
             FlaxBertModel,
             FlaxBertPreTrainedModel,
+        )
+        from .models.ernie import (
+            FlaxErnieForCausalLM,
+            FlaxErnieForMaskedLM,
+            FlaxErnieForMultipleChoice,
+            FlaxErnieForNextSentencePrediction,
+            FlaxErnieForPreTraining,
+            FlaxErnieForQuestionAnswering,
+            FlaxErnieForSequenceClassification,
+            FlaxErnieForTokenClassification,
+            FlaxErnieModel,
+            FlaxErniePreTrainedModel,
         )
         from .models.big_bird import (
             FlaxBigBirdForCausalLM,
