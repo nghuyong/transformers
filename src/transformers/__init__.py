@@ -907,7 +907,6 @@ else:
             "ErnieLMHeadModel",
             "ErnieModel",
             "ErniePreTrainedModel",
-            "load_tf_weights_in_ernie",
         ]
     )
     _import_structure["models.bert_generation"].extend(
@@ -3633,7 +3632,6 @@ if TYPE_CHECKING:
             ErnieLMHeadModel,
             ErnieModel,
             ErniePreTrainedModel,
-            load_tf_weights_in_ernie,
         )
         from .models.bert_generation import (
             BertGenerationDecoder,
