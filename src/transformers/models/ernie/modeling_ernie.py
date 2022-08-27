@@ -63,24 +63,24 @@ _CHECKPOINT_FOR_DOC = "nghuyong/ernie-3.0-base-zh"
 _CONFIG_FOR_DOC = "ErnieConfig"
 _TOKENIZER_FOR_DOC = "BertTokenizer"
 
-# TokenClassification docstring
-_CHECKPOINT_FOR_TOKEN_CLASSIFICATION = "dbmdz/ernie-large-cased-finetuned-conll03-english"
-_TOKEN_CLASS_EXPECTED_OUTPUT = (
-    "['O', 'I-ORG', 'I-ORG', 'I-ORG', 'O', 'O', 'O', 'O', 'O', 'I-LOC', 'O', 'I-LOC', 'I-LOC'] "
-)
-_TOKEN_CLASS_EXPECTED_LOSS = 0.01
-
-# QuestionAnswering docstring
-_CHECKPOINT_FOR_QA = "deepset/ernie-base-cased-squad2"
-_QA_EXPECTED_OUTPUT = "'a nice puppet'"
-_QA_EXPECTED_LOSS = 7.41
-_QA_TARGET_START_INDEX = 14
-_QA_TARGET_END_INDEX = 15
-
-# SequenceClassification docstring
-_CHECKPOINT_FOR_SEQUENCE_CLASSIFICATION = "textattack/nghuyong/ernie-3.0-base-zh-yelp-polarity"
-_SEQ_CLASS_EXPECTED_OUTPUT = "'LABEL_1'"
-_SEQ_CLASS_EXPECTED_LOSS = 0.01
+# # TokenClassification docstring
+# _CHECKPOINT_FOR_TOKEN_CLASSIFICATION = "dbmdz/ernie-large-cased-finetuned-conll03-english"
+# _TOKEN_CLASS_EXPECTED_OUTPUT = (
+#     "['O', 'I-ORG', 'I-ORG', 'I-ORG', 'O', 'O', 'O', 'O', 'O', 'I-LOC', 'O', 'I-LOC', 'I-LOC'] "
+# )
+# _TOKEN_CLASS_EXPECTED_LOSS = 0.01
+#
+# # QuestionAnswering docstring
+# _CHECKPOINT_FOR_QA = "deepset/ernie-base-cased-squad2"
+# _QA_EXPECTED_OUTPUT = "'a nice puppet'"
+# _QA_EXPECTED_LOSS = 7.41
+# _QA_TARGET_START_INDEX = 14
+# _QA_TARGET_END_INDEX = 15
+#
+# # SequenceClassification docstring
+# _CHECKPOINT_FOR_SEQUENCE_CLASSIFICATION = "textattack/nghuyong/ernie-3.0-base-zh-yelp-polarity"
+# _SEQ_CLASS_EXPECTED_OUTPUT = "'LABEL_1'"
+# _SEQ_CLASS_EXPECTED_LOSS = 0.01
 
 
 ERNIE_PRETRAINED_MODEL_ARCHIVE_LIST = [
@@ -680,7 +680,6 @@ class ErniePreTrainedModel(PreTrainedModel):
     """
 
     config_class = ErnieConfig
-    load_tf_weights = load_tf_weights_in_ernie
     base_model_prefix = "ernie"
     supports_gradient_checkpointing = True
     _keys_to_ignore_on_load_missing = [r"position_ids"]
@@ -1474,14 +1473,6 @@ class ErnieForSequenceClassification(ErniePreTrainedModel):
         self.post_init()
 
     @add_start_docstrings_to_model_forward(ERNIE_INPUTS_DOCSTRING.format("batch_size, sequence_length"))
-    @add_code_sample_docstrings(
-        processor_class=_TOKENIZER_FOR_DOC,
-        checkpoint=_CHECKPOINT_FOR_SEQUENCE_CLASSIFICATION,
-        output_type=SequenceClassifierOutput,
-        config_class=_CONFIG_FOR_DOC,
-        expected_output=_SEQ_CLASS_EXPECTED_OUTPUT,
-        expected_loss=_SEQ_CLASS_EXPECTED_LOSS,
-    )
     def forward(
         self,
         input_ids: Optional[torch.Tensor] = None,
@@ -1677,14 +1668,6 @@ class ErnieForTokenClassification(ErniePreTrainedModel):
         self.post_init()
 
     @add_start_docstrings_to_model_forward(ERNIE_INPUTS_DOCSTRING.format("batch_size, sequence_length"))
-    @add_code_sample_docstrings(
-        processor_class=_TOKENIZER_FOR_DOC,
-        checkpoint=_CHECKPOINT_FOR_TOKEN_CLASSIFICATION,
-        output_type=TokenClassifierOutput,
-        config_class=_CONFIG_FOR_DOC,
-        expected_output=_TOKEN_CLASS_EXPECTED_OUTPUT,
-        expected_loss=_TOKEN_CLASS_EXPECTED_LOSS,
-    )
     def forward(
         self,
         input_ids: Optional[torch.Tensor] = None,
@@ -1761,16 +1744,6 @@ class ErnieForQuestionAnswering(ErniePreTrainedModel):
         self.post_init()
 
     @add_start_docstrings_to_model_forward(ERNIE_INPUTS_DOCSTRING.format("batch_size, sequence_length"))
-    @add_code_sample_docstrings(
-        processor_class=_TOKENIZER_FOR_DOC,
-        checkpoint=_CHECKPOINT_FOR_QA,
-        output_type=QuestionAnsweringModelOutput,
-        config_class=_CONFIG_FOR_DOC,
-        qa_target_start_index=_QA_TARGET_START_INDEX,
-        qa_target_end_index=_QA_TARGET_END_INDEX,
-        expected_output=_QA_EXPECTED_OUTPUT,
-        expected_loss=_QA_EXPECTED_LOSS,
-    )
     def forward(
         self,
         input_ids: Optional[torch.Tensor] = None,
